@@ -1,13 +1,14 @@
 import { Article, WireDispatch, TickerItem, Metric, Company } from './types'
 
+// Prices as of March 10, 2026 close
 export const tickerItems: TickerItem[] = [
-  { label: 'NVDA', value: '$142.58', change: '+2.4%', direction: 'up' },
-  { label: 'TSM', value: '$198.32', change: '+1.1%', direction: 'up' },
-  { label: 'ASML', value: '$812.40', change: '-0.8%', direction: 'down' },
-  { label: 'AMD', value: '$178.90', change: '+3.2%', direction: 'up' },
-  { label: 'AVGO', value: '$214.55', change: '+0.6%', direction: 'up' },
-  { label: 'MU', value: '$108.22', change: '-1.3%', direction: 'down' },
-  { label: 'INTC', value: '$24.18', change: '-2.1%', direction: 'down' },
+  { label: 'NVDA', value: '$184.77', change: '+1.2%', direction: 'up' },
+  { label: 'TSM', value: '$348.70', change: '+2.9%', direction: 'up' },
+  { label: 'ASML', value: '$1,383.87', change: '+1.9%', direction: 'up' },
+  { label: 'AMD', value: '$202.68', change: '+3.6%', direction: 'up' },
+  { label: 'AVGO', value: '$352.33', change: '+1.9%', direction: 'up' },
+  { label: 'MU', value: '$405.35', change: '+4.1%', direction: 'up' },
+  { label: 'INTC', value: '$45.88', change: '-5.5%', direction: 'down' },
   { label: 'HBM4 Spot', value: '$18.40/GB', change: '+5.2%', direction: 'up' },
   { label: 'CoWoS Util', value: '97.2%', change: '+0.8%', direction: 'up' },
 ]
@@ -1725,9 +1726,10 @@ export const companies: Company[] = [
     description: 'Designer of GPUs and AI accelerators, dominant in training and inference hardware.',
     supplyChainPosition: 'NVIDIA sits at the center of the AI compute stack, designing the GPUs and networking equipment (InfiniBand/NVLink) that power the majority of AI training and inference globally. The company is fabless, relying on TSMC for manufacturing and SK Hynix/Samsung for HBM memory.',
     beats: ['chips', 'infrastructure'],
+    // Updated March 10, 2026
     metrics: [
-      { label: 'Market Cap', value: '$3.62T', change: '+4.2%', direction: 'up' },
-      { label: 'Data Center Rev', value: '$39.2B', change: '+78%', direction: 'up' },
+      { label: 'Market Cap', value: '$4.49T', change: '+1.2%', direction: 'up' },
+      { label: 'Data Center Rev', value: '$51.2B', change: '+75%', direction: 'up' },
       { label: 'CoWoS Allocation', value: '~30%', change: 'Stable', direction: 'flat' },
       { label: 'HBM Consumption', value: '~60%', change: '+15%', direction: 'up' },
     ],
@@ -1740,10 +1742,11 @@ export const companies: Company[] = [
     description: 'World\'s largest semiconductor foundry, manufacturing chips for Apple, NVIDIA, AMD, and others.',
     supplyChainPosition: 'TSMC is the critical manufacturing node in the AI supply chain. Its advanced nodes (3nm, 2nm) and advanced packaging (CoWoS, InFO) are essential for producing AI accelerators. The company controls approximately 90% of the advanced logic chip market.',
     beats: ['materials-fab', 'chips'],
+    // Updated March 10, 2026
     metrics: [
-      { label: 'Market Cap', value: '$1.02T', change: '+1.1%', direction: 'up' },
-      { label: 'Revenue', value: '$26.3B', change: '+38%', direction: 'up' },
-      { label: 'Utilization', value: '94.1%', change: '+2.1%', direction: 'up' },
+      { label: 'Market Cap', value: '$1.81T', change: '+2.9%', direction: 'up' },
+      { label: 'Revenue (TTM)', value: '$88.3B', change: '+38%', direction: 'up' },
+      { label: 'Capex 2026', value: '$56B', change: 'Record', direction: 'up' },
       { label: 'N2 Yield', value: 'Ramping', change: 'N/A', direction: 'flat' },
     ],
     relatedCompanies: ['nvidia', 'asml', 'apple', 'amd'],
@@ -1755,10 +1758,11 @@ export const companies: Company[] = [
     description: 'Sole manufacturer of extreme ultraviolet (EUV) lithography machines used in advanced chip production.',
     supplyChainPosition: 'ASML occupies a unique monopoly position as the only company capable of producing EUV lithography equipment. Its machines are essential for manufacturing chips at 7nm and below. The company\'s new High-NA EUV systems are critical for the 2nm node and beyond.',
     beats: ['materials-fab'],
+    // Updated March 10, 2026
     metrics: [
-      { label: 'Market Cap', value: '$332B', change: '-0.8%', direction: 'down' },
-      { label: 'Backlog', value: '€39B', change: '+12%', direction: 'up' },
-      { label: 'EUV Systems Shipped', value: '52', change: '+18%', direction: 'up' },
+      { label: 'Market Cap', value: '$560B', change: '+1.9%', direction: 'up' },
+      { label: 'Backlog', value: '€38.8B', change: '+12%', direction: 'up' },
+      { label: '2025 Revenue', value: '€32.7B', change: '+16%', direction: 'up' },
       { label: 'High-NA Systems', value: '4', change: 'New', direction: 'up' },
     ],
     relatedCompanies: ['tsmc', 'samsung', 'intel'],
