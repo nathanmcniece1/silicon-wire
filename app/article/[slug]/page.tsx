@@ -17,6 +17,14 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const article = await getArticleBySlug(params.slug)
   if (!article) return { title: 'Article Not Found' }
 
+  const ogParams = new URLSearchParams({
+    title: article.title,
+    beat: article.beat,
+    date: article.publishedAt,
+    readTime: String(article.readTime),
+  })
+  const ogImage = `/api/og?${ogParams.toString()}`
+
   return {
     title: article.title,
     description: article.excerpt,
@@ -25,11 +33,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       description: article.excerpt,
       type: 'article',
       publishedTime: article.publishedAt,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: article.title }],
     },
     twitter: {
       card: 'summary_large_image',
       title: article.title,
       description: article.excerpt,
+      images: [ogImage],
     },
   }
 }
