@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const article = await getArticleBySlug(params.slug)
   if (!article) return { title: 'Article Not Found' }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://siliconwire.xyz'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.siliconwire.xyz'
   const ogParams = new URLSearchParams({
     title: article.title,
     beat: article.beat,

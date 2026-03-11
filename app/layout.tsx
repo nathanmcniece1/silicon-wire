@@ -33,11 +33,11 @@ export const metadata: Metadata = {
     template: '%s | The Silicon Wire',
   },
   description: 'From rare earth extraction to frontier model deployment. The Silicon Wire covers every link in the chain that powers artificial intelligence.',
-  metadataBase: new URL('https://siliconwire.xyz'),
+  metadataBase: new URL('https://www.siliconwire.xyz'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://siliconwire.xyz',
+    url: 'https://www.siliconwire.xyz',
     siteName: 'The Silicon Wire',
     title: 'The Silicon Wire — Intelligence Across the Full AI Supply Chain',
     description: 'From rare earth extraction to frontier model deployment. The Silicon Wire covers every link in the chain that powers artificial intelligence.',
