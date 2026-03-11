@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npm install)",
+      "Bash(npx vercel --yes)",
+      "Bash(npx vercel --prod --yes)",
+      "Bash(vercel --version)"
+    ]
+  }
+}
