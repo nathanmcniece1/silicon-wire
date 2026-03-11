@@ -1,15 +1,14 @@
 import PulseDot from '@/components/pulse-dot'
-import BeatTabs from '@/components/beat-tabs'
-import FeaturedGrid from '@/components/featured-grid'
-import SectionHeader from '@/components/section-header'
+import FilteredArticles from '@/components/filtered-articles'
 import WireFeed from '@/components/wire-feed'
+import SectionHeader from '@/components/section-header'
 import MetricsStrip from '@/components/metrics-strip'
 import NewsletterCTA from '@/components/newsletter-cta'
-import { getFeaturedArticles, getWireDispatches, getMetrics } from '@/lib/sanity'
+import { getAllArticles, getWireDispatches, getMetrics } from '@/lib/sanity'
 
 export default async function HomePage() {
   const [articles, dispatches, metrics] = await Promise.all([
-    getFeaturedArticles(),
+    getAllArticles(),
     getWireDispatches(6),
     getMetrics(),
   ])
@@ -55,14 +54,8 @@ export default async function HomePage() {
         </p>
       </section>
 
-      {/* Beat Tabs */}
-      <BeatTabs />
-
-      {/* Featured Analysis */}
-      <section className="max-w-content mx-auto px-12 py-10 max-[900px]:px-5 max-[900px]:py-7">
-        <SectionHeader title="Featured Analysis" moreLink="/wire" moreLabel="View all →" />
-        <FeaturedGrid articles={articles} />
-      </section>
+      {/* Beat Tabs + Filtered Articles */}
+      <FilteredArticles articles={articles} />
 
       {/* Wire Dispatches */}
       <section className="max-w-content mx-auto px-12 pb-10 max-[900px]:px-5 max-[900px]:pb-7" style={{ paddingTop: 0 }}>
