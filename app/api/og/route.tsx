@@ -25,12 +25,12 @@ export async function GET(req: NextRequest) {
 
   // Load Instrument Serif for the article title
   const instrumentSerifData = await fetch(
-    'https://fonts.gstatic.com/s/instrumentserif/v4/jizBRFtNs2ka5fCjGwVOmCrdq8axFg.ttf'
+    'https://fonts.gstatic.com/s/instrumentserif/v5/jizBRFtNs2ka5fXjeivQ4LroWlx-2zI.ttf'
   ).then((res) => res.arrayBuffer())
 
   // Load JetBrains Mono for UI elements
   const jetBrainsMonoData = await fetch(
-    'https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjOVGR.ttf'
+    'https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPQ.ttf'
   ).then((res) => res.arrayBuffer())
 
   const fontSize = title.length > 80 ? 40 : title.length > 50 ? 46 : 52
