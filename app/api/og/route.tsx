@@ -23,6 +23,18 @@ export async function GET(req: NextRequest) {
     ? new Date(rawDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
     : ''
 
+  // Load Instrument Serif for the article title
+  const instrumentSerifData = await fetch(
+    'https://fonts.gstatic.com/s/instrumentserif/v4/jizBRFtNs2ka5fCjGwVOmCrdq8axFg.ttf'
+  ).then((res) => res.arrayBuffer())
+
+  // Load JetBrains Mono for UI elements
+  const jetBrainsMonoData = await fetch(
+    'https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjOVGR.ttf'
+  ).then((res) => res.arrayBuffer())
+
+  const fontSize = title.length > 80 ? 40 : title.length > 50 ? 46 : 52
+
   return new ImageResponse(
     (
       <div
@@ -39,13 +51,9 @@ export async function GET(req: NextRequest) {
         }}
       >
         {/* Corner brackets */}
-        {/* Top-left */}
         <div style={{ position: 'absolute', top: '32px', left: '32px', width: '40px', height: '40px', borderTop: '2px solid rgba(196,113,59,0.35)', borderLeft: '2px solid rgba(196,113,59,0.35)', display: 'flex' }} />
-        {/* Top-right */}
         <div style={{ position: 'absolute', top: '32px', right: '32px', width: '40px', height: '40px', borderTop: '2px solid rgba(196,113,59,0.35)', borderRight: '2px solid rgba(196,113,59,0.35)', display: 'flex' }} />
-        {/* Bottom-left */}
         <div style={{ position: 'absolute', bottom: '32px', left: '32px', width: '40px', height: '40px', borderBottom: '2px solid rgba(196,113,59,0.35)', borderLeft: '2px solid rgba(196,113,59,0.35)', display: 'flex' }} />
-        {/* Bottom-right */}
         <div style={{ position: 'absolute', bottom: '32px', right: '32px', width: '40px', height: '40px', borderBottom: '2px solid rgba(196,113,59,0.35)', borderRight: '2px solid rgba(196,113,59,0.35)', display: 'flex' }} />
 
         {/* Top section: beat tag + meta */}
@@ -54,7 +62,7 @@ export async function GET(req: NextRequest) {
             <div
               style={{
                 fontSize: '12px',
-                fontFamily: 'monospace',
+                fontFamily: 'JetBrains Mono',
                 letterSpacing: '0.1em',
                 color: '#C4713B',
                 background: 'rgba(196,113,59,0.1)',
@@ -68,26 +76,12 @@ export async function GET(req: NextRequest) {
             </div>
           )}
           {date && (
-            <div
-              style={{
-                fontSize: '13px',
-                fontFamily: 'monospace',
-                color: 'rgba(232,230,225,0.35)',
-                display: 'flex',
-              }}
-            >
+            <div style={{ fontSize: '13px', fontFamily: 'JetBrains Mono', color: 'rgba(232,230,225,0.35)', display: 'flex' }}>
               {date}
             </div>
           )}
           {readTime && (
-            <div
-              style={{
-                fontSize: '13px',
-                fontFamily: 'monospace',
-                color: 'rgba(232,230,225,0.35)',
-                display: 'flex',
-              }}
-            >
+            <div style={{ fontSize: '13px', fontFamily: 'JetBrains Mono', color: 'rgba(232,230,225,0.35)', display: 'flex' }}>
               · {readTime} min read
             </div>
           )}
@@ -106,8 +100,8 @@ export async function GET(req: NextRequest) {
         >
           <div
             style={{
-              fontSize: title.length > 80 ? '40px' : title.length > 50 ? '46px' : '52px',
-              fontFamily: 'serif',
+              fontSize: `${fontSize}px`,
+              fontFamily: 'Instrument Serif',
               fontWeight: 400,
               color: '#E8E6E1',
               lineHeight: 1.15,
@@ -120,7 +114,7 @@ export async function GET(req: NextRequest) {
           </div>
         </div>
 
-        {/* Bottom: Logo lockup */}
+        {/* Bottom: Logo lockup + CTA */}
         <div
           style={{
             display: 'flex',
@@ -143,7 +137,7 @@ export async function GET(req: NextRequest) {
             <div
               style={{
                 fontSize: '16px',
-                fontFamily: 'monospace',
+                fontFamily: 'JetBrains Mono',
                 fontWeight: 600,
                 color: '#E8E6E1',
                 letterSpacing: '-0.01em',
@@ -154,15 +148,21 @@ export async function GET(req: NextRequest) {
             </div>
           </div>
 
+          {/* CTA */}
           <div
             style={{
-              fontSize: '13px',
-              fontFamily: 'monospace',
-              color: 'rgba(196,113,59,0.5)',
               display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              fontSize: '13px',
+              fontFamily: 'JetBrains Mono',
+              color: '#C4713B',
+              border: '1px solid rgba(196,113,59,0.3)',
+              borderRadius: '4px',
+              padding: '8px 18px',
             }}
           >
-            siliconwire.xyz
+            Read the wire →
           </div>
         </div>
       </div>
@@ -170,6 +170,20 @@ export async function GET(req: NextRequest) {
     {
       width: 1200,
       height: 630,
+      fonts: [
+        {
+          name: 'Instrument Serif',
+          data: instrumentSerifData,
+          style: 'normal',
+          weight: 400,
+        },
+        {
+          name: 'JetBrains Mono',
+          data: jetBrainsMonoData,
+          style: 'normal',
+          weight: 400,
+        },
+      ],
     }
   )
 }
