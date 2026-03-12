@@ -15,6 +15,24 @@ export const tickerItems: TickerItem[] = [
 
 export const featuredArticles: Article[] = [
   {
+    title: 'Standard Kernel Raises $20M to Bet That AI Can Write Its Own GPU Code',
+    slug: 'standard-kernel-seed-round-ai-kernel-generation',
+    beat: 'software',
+    format: 'wire-dispatch',
+    excerpt: 'Standard Kernel has raised a $20 million seed round led by Jump Capital to build an autonomous kernel generation platform — software that uses AI to write the low-level GPU code that AI itself runs on. The company claims 80% to 4x performance gains over NVIDIA\'s cuDNN on H100 workloads. If that holds at scale, the implications reach far beyond one startup.',
+    body: '',
+    publishedAt: '2026-03-12',
+    tags: ['kernel-generation', 'gpu', 'nvidia', 'cuda', 'infrastructure', 'funding'],
+    companies: ['Standard Kernel', 'NVIDIA', 'CoreWeave'],
+    confidenceScore: 0.88,
+    sources: [
+      { title: 'Standard Kernel Seed Round Announcement', url: 'https://www.prnewswire.com/news-releases/standard-kernel-raises-20m-seed-round-to-let-ai-rewrite-the-software-that-runs-ai-302710281.html' },
+      { title: 'KernelBench: Can LLMs Write Efficient GPU Kernels?', url: 'https://arxiv.org/abs/2502.10517' },
+      { title: 'Surprisingly Fast AI-Generated Kernels — Stanford', url: 'https://scalingintelligence.stanford.edu/blogs/fastkernels/' },
+    ],
+    readTime: 8,
+  },
+  {
     title: 'War in Iran, the $119 Oil Spike, and What It Actually Means for AI Infrastructure',
     slug: 'iran-war-oil-shock-ai-infrastructure-energy-crisis',
     beat: 'infrastructure',
