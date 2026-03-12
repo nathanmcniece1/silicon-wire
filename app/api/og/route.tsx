@@ -11,6 +11,15 @@ const BEAT_LABELS: Record<string, string> = {
   'policy-capital': 'POLICY & CAPITAL',
 }
 
+// Cache fonts at module level so they're only fetched once per cold start
+const instrumentSerifPromise = fetch(
+  'https://fonts.gstatic.com/s/instrumentserif/v5/jizBRFtNs2ka5fXjeivQ4LroWlx-2zI.ttf'
+).then((res) => res.arrayBuffer())
+
+const jetBrainsMonoPromise = fetch(
+  'https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPQ.ttf'
+).then((res) => res.arrayBuffer())
+
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url)
   const title = searchParams.get('title') ?? 'The Silicon Wire'
@@ -23,15 +32,11 @@ export async function GET(req: NextRequest) {
     ? new Date(rawDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
     : ''
 
-  // Load Instrument Serif for the article title
-  const instrumentSerifData = await fetch(
-    'https://fonts.gstatic.com/s/instrumentserif/v5/jizBRFtNs2ka5fXjeivQ4LroWlx-2zI.ttf'
-  ).then((res) => res.arrayBuffer())
-
-  // Load JetBrains Mono for UI elements
-  const jetBrainsMonoData = await fetch(
-    'https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPQ.ttf'
-  ).then((res) => res.arrayBuffer())
+  // Fonts are cached — parallel await is near-instant after first request
+  const [instrumentSerifData, jetBrainsMonoData] = await Promise.all([
+    instrumentSerifPromise,
+    jetBrainsMonoPromise,
+  ])
 
   const fontSize = title.length > 80 ? 40 : title.length > 50 ? 46 : 52
 
@@ -174,14 +179,14 @@ export async function GET(req: NextRequest) {
         {
           name: 'Instrument Serif',
           data: instrumentSerifData,
-          style: 'normal',
-          weight: 400,
+          style: 'normal' as const,
+          weight: 400 as const,
         },
         {
           name: 'JetBrains Mono',
           data: jetBrainsMonoData,
-          style: 'normal',
-          weight: 400,
+          style: 'normal' as const,
+          weight: 400 as const,
         },
       ],
     }
