@@ -5,7 +5,8 @@
       "Bash(npm install)",
       "Bash(npx vercel --yes)",
       "Bash(npx vercel --prod --yes)",
-      "Bash(vercel --version)"
+      "Bash(vercel --version)",
+      "Bash(curl -sL \"https://www.siliconwire.xyz/api/og?title=War+in+Iran%2C+the+%24119+Oil+Spike%2C+and+What+It+Actually+Means+for+AI+Infrastructure&beat=infrastructure&date=2026-03-10T08%3A00%3A00Z&readTime=14\" --output /tmp/og-article.png)"
     ]
   }
 }
